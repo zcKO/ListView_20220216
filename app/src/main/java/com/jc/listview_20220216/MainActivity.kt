@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
 
         studentListView.adapter = mAdapter
-    
+
         studentListView.setOnItemClickListener { parent, view, position, id ->
 
             val clickedStudent = mStudentList[position]
@@ -40,7 +40,16 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "${clickedStudent.name} 학생이 클릭 되었습니다.", Toast.LENGTH_SHORT).show()
 
         }
-        
+
+        studentListView.setOnItemLongClickListener { parent, view, position, id ->
+
+            val longClickedStudent = mStudentList[position]
+            Toast.makeText(this, "${longClickedStudent.name} 학생이 길게 클릭 되었습니다.", Toast.LENGTH_SHORT)
+                .show()
+
+            return@setOnItemLongClickListener true
+
+        }
 
     }
 }
