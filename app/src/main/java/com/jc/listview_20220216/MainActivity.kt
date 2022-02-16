@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+//    테스트용 주석입니다.
+
     lateinit var mAdapter: StudentAdapter
 
     val mStudentList = ArrayList<StudentData>()
@@ -55,11 +57,16 @@ class MainActivity : AppCompatActivity() {
                     mAdapter.notifyDataSetChanged()
                 })
                 .setNegativeButton("취소", null)
+                .setNeutralButton("잘 모르겠음", DialogInterface.OnClickListener { dialog, which ->
+                    Toast.makeText(this, "중립 버튼이 눌렸다.", Toast.LENGTH_SHORT).show()
+                })
                 .show()
 
             return@setOnItemLongClickListener true
 
         }
+
+        
 
     }
 }
