@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.jc.listview_20220216.R
 import com.jc.listview_20220216.datas.StudentData
 
@@ -25,6 +26,18 @@ class StudentAdapter(
         }
 
         val row = tempRow!!
+
+        val data = mList[position]
+
+        val txtStudentName = row.findViewById<TextView>(R.id.txtStudentName)
+        val txtAge = row.findViewById<TextView>(R.id.txtAge)
+        val txtAddress = row.findViewById<TextView>(R.id.txtAddress)
+
+        txtStudentName.text = data.name
+        txtAddress.text = data.address
+
+        val age = 2022 - data.birthYear + 1
+        txtAge.text = "(${age}세)"
 
         return row
 
