@@ -2,9 +2,13 @@ package com.jc.listview_20220216
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.jc.listview_20220216.adapters.StudentAdapter
 import com.jc.listview_20220216.datas.StudentData
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var mAdapter: StudentAdapter
 
     val mStudentList = ArrayList<StudentData>()
 
@@ -23,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(StudentData("정동준", 1992, "경기도 남양주시"))
         mStudentList.add(StudentData("최재훈", 1994, "경기도 수원시"))
         mStudentList.add(StudentData("이성노", 1988, "경기도 남양주시"))
+
+        mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
+
+        studentListView.adapter = mAdapter
+
 
     }
 }
